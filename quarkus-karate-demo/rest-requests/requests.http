@@ -1,0 +1,26 @@
+GET http://localhost:8080/coursetype
+
+### korrekte Anfrage
+
+POST http://localhost:8080/coursetype
+Content-Type: application/json
+
+{
+  "abbr": "schutz",
+  "name": "Schutzhunde-Ausbildung"
+}
+
+### korrekte Anfrage
+
+PUT http://localhost:8080/coursetype/4
+Content-Type: application/json
+
+{
+  "abbr": "such",
+  "name": "Suchhunde-Ausbildung"
+}
+
+### korrekte Anfrage
+
+
+DELETE http://localhost:8080/coursetype/10
