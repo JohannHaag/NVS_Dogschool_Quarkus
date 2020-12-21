@@ -1,24 +1,21 @@
 package at.htl.karate.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "B_Booking")
-public class Booking extends PanacheEntity {
+@Table(name = "S_BOOKING")
+public class Booking {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "B_Date")
-    public LocalDate bookingDate;
-    @Column(name = "B_Price")
-    public double price;
-    @ManyToOne
-    @JoinColumn(name = "A_Dog_ID")
+    private LocalDate bookingDate;
+    private double price;
+    @ManyToOne(cascade = CascadeType.ALL)
     Dog dog;
-    @ManyToOne
-    @JoinColumn(name = "A_Course_ID")
+    @ManyToOne(cascade = CascadeType.ALL)
     Course course;
 
     //region Constructor
@@ -32,4 +29,50 @@ public class Booking extends PanacheEntity {
         this.price = price;
     }
     //endregion
+
+
+    //region Getter and Setter
+    public Long getId() {
+        return id;
+    }
+
+
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Course getCourse(){
+        return course;
+    }
+    public  void  setCourse(Course course){
+        this.course = course;
+    }
+    public Dog getDog(){
+        return dog;
+    }
+    public  void  setDog(Dog dog){
+        this.dog = dog;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("Buchung: %s mit %s (%s %s)",
+                course.getName(),
+                dog.getName(),
+                dog.getOwner().getFirstName(),
+                dog.getOwner().getLastName());
+    }
 }

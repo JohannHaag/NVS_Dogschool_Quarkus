@@ -1,26 +1,57 @@
 package at.htl.karate.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "D_Dog")
-public class Dog extends PanacheEntity {
+@Table(name = "S_DOG")
+public class Dog {
 
-    @Column(name = "D_Name")
-    public String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Person owner;
+
+    @Transient
     @ManyToOne
-    @JoinColumn(name = "A_Person_ID")
-    public Person owner;
+    Person person;
 
     //region Constructors
     public Dog() {
     }
 
     public Dog(String name, Person owner) {
+        this.setName(name);
+        this.setOwner(owner);
+    }
+    //endregion
+
+    //region Getter and Setter
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
     //endregion
+
+
+    @Override
+    public String toString() {
+        return String.format("%s, (%s, %s)", owner.getLastName(), owner.getFirstName());
+    }
 }

@@ -13,12 +13,14 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "C_CourseType")
-public class CourseType extends PanacheEntity {
+@Table(name = "S_COURSE_TYPE")
+public class CourseType  {
 
-    @Column(name = "C_Name")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long id;
+
     public String name;
-    @Column(name = "C_Abbr")
     public String abbr; // abbreviation
 
     //region Constructors

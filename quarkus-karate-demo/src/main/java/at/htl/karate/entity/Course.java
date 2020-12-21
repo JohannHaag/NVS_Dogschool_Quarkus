@@ -1,26 +1,21 @@
 package at.htl.karate.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "C_Course")
-public class Course extends PanacheEntity {
+@Table(name = "S_COURSE")
+public class Course {
 
-
-    @Column(name = "C_Name")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long id;
     String name;
-    @Column(name = "C_Price")
     public double price;
-    @Column(name = "C_StartDateTime")
     public LocalDateTime startDatetime;
-    @Column(name = "C_NoOfMeetings")
     public int noOfMeetings;
     @ManyToOne
-    @JoinColumn(name = "A_CourseType_ID")
     CourseType courseType;
 
     //region Constructors
@@ -36,5 +31,58 @@ public class Course extends PanacheEntity {
     }
 
     //endregion
+
+    //region Getter and Setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return startDatetime;
+    }
+
+    public void setLocalDateTime(LocalDateTime startDatetime) {
+        this.startDatetime = startDatetime;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getNoOfMeetings() {
+        return noOfMeetings;
+    }
+
+    public void setNoOfMeetings(int noOfMeetings) {
+        this.noOfMeetings = noOfMeetings;
+    }
+
+    public CourseType getCourseType(){
+        return courseType;
+    }
+    public  void  setCourseType(CourseType courseType){
+        this.courseType = courseType;
+    }
+    //endregion
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
 }

@@ -9,7 +9,7 @@ Feature: Somebody will be greeting
     Then status 200
 
   Scenario: GET one Coursetype
-    Given path '/coursetype/8'
+    Given path '/coursetype/1'
     When method GET
     Then status 200
 
@@ -22,14 +22,14 @@ Feature: Somebody will be greeting
 
   Scenario: PUT a Coursetype
 
-    Given path '/coursetype/17'
+    Given path '/coursetype/4'
     And request {abbr:'wwweee', name:'Der Welpenkurs'}
     When method PUT
     Then status 200
 
   Scenario: DELETE a Coursetype
 
-    Given path '/coursetype/17'
+    Given path '/coursetype/4'
     And request {abbr:'wwweee', name:'Der Welpenkurs'}
     When method DELETE
     Then status 204

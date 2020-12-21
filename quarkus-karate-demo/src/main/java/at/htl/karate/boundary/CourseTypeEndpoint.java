@@ -11,6 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
+import java.util.List;
 
 @Path("/coursetype")
 public class CourseTypeEndpoint {
@@ -23,18 +24,16 @@ public class CourseTypeEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
-        CourseType courseType = courseTypeDao
-                .find("name","Welpenkurs")
-                .firstResult();
+        List<CourseType> courseTypeList = courseTypeDao.findAll().list();
         return Response
-                .ok(courseType)
+                .ok(courseTypeList)
                 .build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findone(@PathParam("id") long id) {
+    public Response findById(@PathParam("id") long id) {
         CourseType courseType = courseTypeDao.findById(id);
         return Response
                 .ok(courseType)
@@ -45,12 +44,12 @@ public class CourseTypeEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response create() {
-        CourseType courseType = new CourseType("Welpenkurs2", "welp");
-        courseTypeDao.persist(courseType);
+    public Response create(CourseType courseType) {
+        CourseType courseType1 = courseTypeDao.save(courseType);
+        courseTypeDao.persist(courseType1);
         return Response
                 .status(Response.Status.CREATED)
-                .location(URI.create("coursetype/" + courseType.id))
+                .location(URI.create("coursetype/" + courseType1.id))
                 .build();
     }
 

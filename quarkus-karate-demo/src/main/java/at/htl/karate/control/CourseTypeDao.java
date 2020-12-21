@@ -12,4 +12,9 @@ public class CourseTypeDao implements PanacheRepository<CourseType> {
     public CourseType findByName(String abbr){
         return find("abbr",abbr).firstResult();
     }
+
+    public CourseType save(CourseType courseType){
+        persistAndFlush(courseType);
+        return courseType;
+    }
 }

@@ -10,7 +10,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,11 +30,12 @@ public class InitBean {
     @Inject
     PersonDao personDao;
 
-    @Inject
-    DogDao dogDao;
 
     @Inject
     CourseDao courseDao;
+
+    @Inject
+    DogDao dogDao;
 
 
     @Transactional
@@ -44,26 +44,28 @@ public class InitBean {
     }
 
     private void initDb() {
-        Person matt = new Person("Matt", "Murdock");
-        Person mathilda = new Person("Mathilda", "Lando");
 
-        personDao.persist(matt);
-        personDao.persist(mathilda);
+            Person matt = new Person("Matt", "Murdock");
+            Person mathilda = new Person("Mathilda", "Lando");
 
-        dogDao.persist(new Dog("Timmy", matt));
-        dogDao.persist(new Dog("Tino", matt));
-        dogDao.persist(new Dog("Arko", mathilda));
-        dogDao.persist(new Dog("Rex", mathilda));
-        dogDao.persist(new Dog("Edi", mathilda));
+            personDao.persist(matt);
+            personDao.persist(mathilda);
 
-        CourseType welpenkurs = new CourseType("Welpenkurs", "w");
-        CourseType begleithunde1 = new CourseType("Begleithunde1", "bg1");
-        CourseType begleithunde2 = new CourseType("Begleithunde2", "bg2");
-        courseTypeDao.persist(welpenkurs);
-        courseTypeDao.persist(begleithunde1);
-        courseTypeDao.persist(begleithunde2);
-        readCsv();
+            dogDao.persist(new Dog("Timmy", matt));
+            dogDao.persist(new Dog("Tino", matt));
+            dogDao.persist(new Dog("Arko", mathilda));
+            dogDao.persist(new Dog("Rex", mathilda));
+            dogDao.persist(new Dog("Edi", mathilda));
+
+            CourseType welpenkurs = new CourseType("Welpenkurs", "w");
+            CourseType begleithunde1 = new CourseType("Begleithunde1", "bg1");
+            CourseType begleithunde2 = new CourseType("Begleithunde2", "bg2");
+            courseTypeDao.persist(welpenkurs);
+            courseTypeDao.persist(begleithunde1);
+            courseTypeDao.persist(begleithunde2);
+            readCsv();
     }
+
 
     /**
      * Einlesen des csv-Files und speichern in der DB.
