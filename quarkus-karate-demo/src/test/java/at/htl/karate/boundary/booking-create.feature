@@ -4,7 +4,7 @@ Feature: Create a new booking for a course
     * url baseUrl
 
   Scenario: create booking - works
-    Given path 'booking'
+    Given path 'booking/1/3'
     And header Content-Type = 'application/json'
     And request {"bookingDate":"2020-03-07","price":45.0,"course":{"id": 1},"dog":{"id": 3}}
     When method POST
@@ -58,4 +58,3 @@ Feature: Create a new booking for a course
     When method POST
     Then status 400
     And header reason = 'Dog with id=300 is not available'
-

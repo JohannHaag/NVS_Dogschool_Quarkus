@@ -8,10 +8,10 @@ public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    public Long id;
+    public String name;
     @OneToOne(cascade = CascadeType.ALL)
-    private Person owner;
+    public Person owner;
 
     @Transient
     @ManyToOne

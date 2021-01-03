@@ -15,7 +15,7 @@ public class Course {
     public double price;
     public LocalDateTime startDatetime;
     public int noOfMeetings;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
     CourseType courseType;
 
     //region Constructors

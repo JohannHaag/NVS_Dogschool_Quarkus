@@ -115,14 +115,5 @@ public class DbTest {
                 .value().isEqualTo("Begleithunde2");
     }
 
-  private static DataSource getDatasource() {
-        ClientDataSource dataSource = new ClientDataSource();
-        dataSource.setServerName("localhost");   // ist default Wert
-        dataSource.setPortNumber(1527);   // ist default Wert
-        dataSource.setDatabaseName(DATABASE);
-        dataSource.setUser(USERNAME);
-        dataSource.setPassword(PASSWORD);
-        return dataSource;
-    }
 
 }

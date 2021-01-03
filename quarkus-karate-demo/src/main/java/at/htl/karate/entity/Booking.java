@@ -9,13 +9,13 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
     private LocalDate bookingDate;
     private double price;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
     Dog dog;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
     Course course;
 
     //region Constructor
