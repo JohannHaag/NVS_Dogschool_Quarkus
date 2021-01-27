@@ -1,0 +1,126 @@
+:revealjs_theme: night
+:revealjs_slideNumber: true
+
+== Android Services
+
+[background-color="blue"]
+=== Structure
+
+1. Service
+2. The Life Cycle of Services
+3. Unbound Service
+4. Bound Service
+
+[%notitle]
+== Slide One
+image::Service.jpg[background,size=cover]
+[background-color="blue"]
+=== What is a Service ?
+
+--
+An Android service is an app component , that runs in the background to permanently perform a specific operation.
+--
+[background-color="blue"]
+=== What are services good for?
+image::Musics.jpg[background,size=cover]
+
+* Network Notifications
+* Play Music
+* GPS Tracker
+
+== The Life Cycle of Services
+image::Types.jpg[background,size=cover]
+[background-color="blue"]
+
+[background-color="blue"]
+=== What is the Life Cycle of services?
+
+--
+* Callback-Methoden
+* Bound Service
+* Unbound Service
+
+--
+[%notitle]
+=== Slide
+image::Unbound_Bound_Services.jpg[canvas,size=contain]
+
+[background-color="blue"]
+== Unbound Service
+|===
+
+| `startService()` | start the Service
+
+| `onStartCommand()` | after `startService()`
+
+| `stopSelf()` | Service close itself
+
+| `stopService()` | close with another component
+
+
+|===
+[background-color="blue"]
+=== Foreground Service
+
+* noticeable to the user
+* presentation as *Notification*
+* Termination of the service -> notification closable
+
+
+[background-color="blue"]
+=== Example: Simple Foreground Service
+
+https://androidwave.com/foreground-service-android-example-in-kotlin/
+
+
+[background-color="blue"]
+=== Background Service
+
+* running in the background
+* unnoticeable to the user
+
+
+[background-color="blue"]
+=== Example: Simple MusicPlayer Service
+
+https://o7planning.org/de/10421/die-anleitung-zu-android-services
+
+
+[background-color="blue"]
+== Bound Service
+
+|===
+
+| `bindService()`: | bind the Service to component
+
+| `onBind()` | after `bindService()`
+
+| `onUnbind()` | replace the Services
+
+|===
+
+[background-color="blue"]
+== Resources:
+--
+[preview=true]
+https://www.big-app.de/alles-zu-services-unter-android/
+
+https://www.tutorialspoint.com/android/android_services.htm
+
+--
+[preview=true]
+
+
+https://www.geeksforgeeks.org/services-in-android-with-example/
+
+https://www.edureka.co/blog/android-service-tutorial/
+
+
+https://vogella.com/tutorials/AndroidServices/article.html
+
+https://developer.android.com/guide/components/services
+
+https://medium.com/@anant.rao07/android-bound-services-f1cceb2f1f3e
+
+
+
